@@ -1,13 +1,25 @@
 package atividades_java;
 
+import java.util.Scanner;
+
 public class BalancoTrimestral {
 
 	public static void main(String[] args) {
-			int gastosJaneiro = 15000;
-			int gastosFevereiro = 23000;
-			int gastosMarco = 17000;
-			int gastosTrimestre, mediaMensal;
+			int gastosJaneiro;
+			int gastosFevereiro;
+			int gastosMarco;
+			int gastosTrimestre, mediaMensal; 
 			boolean gastoControlado = true;
+			Scanner scan = new Scanner(System.in);
+		
+			System.out.println("Digite o valor dos gastos de janeiro: ");
+			gastosJaneiro = scan.nextInt();
+	
+			System.out.println("Digite o valor dos gastos de fevereiro: ");
+			gastosFevereiro = scan.nextInt();
+	
+			System.out.println("Digite o valor dos gastos de março: ");
+			gastosMarco = scan.nextInt();
 			
 			gastosTrimestre = gastosJaneiro + gastosFevereiro + gastosMarco;
 			mediaMensal = gastosTrimestre / 3;
@@ -18,10 +30,8 @@ public class BalancoTrimestral {
 			if(mediaMensal < 30000){
 				System.out.println("O valor está controlado!");
 			}else {
-				boolean gastoControlado = false;
+				gastoControlado = false;
 				System.out.println("O valor está descontrolado!");
 			}
 		}
 	}
-
-}
