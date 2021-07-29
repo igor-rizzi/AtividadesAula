@@ -1,0 +1,99 @@
+/*	* Question 1 *
+
+  SELECT UPPER(first_name ||' '|| last_name) as "Nome ator"
+ 	FROM actor;
+	
+	* Question 2 * 
+	
+  SELECT actor_id, 
+  		 first_name, 
+		 last_name
+	FROM actor
+   WHERE first_name = 'Joe';
+   
+    * Question 3 * 
+	
+  SELECT *
+  	FROM actor
+   WHERE first_name ILIKE '%GEN%';
+   
+    * Question 4 *
+	
+  SELECT *
+  	FROM actor 
+   WHERE last_name ILIKE '%li%'
+ORDER BY last_name,
+		 first_name;
+		 
+	* Question 5 * 
+	 
+  SELECT country_id,
+  		 country
+	FROM country
+   WHERE country in ('China', 'Afghanistan','Bangladesh');
+
+    * Question 6 *
+	
+	
+  ALTER TABLE actor ADD COLUMN middle_name VARCHAR(10);
+  
+   SELECT * FROM actor; 
+  
+	* Question 7 * 
+	
+  ALTER TABLE actor DROP COLUMN middle_name;
+  SELECT * FROM actor; 
+  
+    * Question 8 * 
+	
+  SELECT last_name,
+  			count(last_name) as qtd
+	FROM actor
+GROUP BY last_name
+ORDER BY qtd DESC;
+	
+	* Question 9 * 
+	
+   SELECT last_name,
+  			count(last_name) as qtd
+	FROM actor
+GROUP BY last_name
+  HAVING COUNT(last_name) >= 2
+ORDER BY qtd DESC; 
+
+	* Question 10 * 
+	
+  UPDATE actor 
+  	 SET first_name = 'James'
+   WHERE first_name = 'Groucho'
+   	 AND last_name = 'Williams'; 
+	 
+ SELECT first_name,
+ 		last_name
+   FROM actor
+  WHERE first_name = 'James'
+  
+	* Question 11 * 
+	
+	UPDATE actor 
+  	   SET first_name = 'Groucho'
+     WHERE first_name = 'James'
+   	   AND last_name = 'Williams'; 
+	 
+	 * Question 12 *
+	 
+	 SELECT staff.first_name,
+	 		staff.last_name,
+			address.address
+	   FROM staff
+	   JOIN address ON staff.address_id = address.address_id 
+	   
+	  * Question 13 * */
+	  
+
+	
+	
+
+	
+	
+
