@@ -41,11 +41,12 @@ class Medicamento{
     }
 
     void mostrar(){
-        System.out.println("O seu medicamento é:");
-        System.out.println("\n" + this.nome);
+        System.out.println("\nO seu medicamento é:");
+        System.out.println(this.nome);
         System.out.println("R$" + this.precoVenda);
         this.dataValidade.mostra();
-        System.out.println(this.lab.nomeFantasia + "\n");
+        System.out.println(this.lab.nomeFantasia);
+        System.out.println("A quantidade em estoque é: " + this.qtdEstoque + "\n");
     }
     
 }
