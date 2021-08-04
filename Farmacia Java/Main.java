@@ -33,7 +33,7 @@ class Main {
             if (opt == 1) {
                 System.out.println("\nInforme a quantidade de medicamentos a serem comprados");
                 umMedicamento.comprar(entrada.nextInt());
-                System.out.println("A quantidade em estoque foi alterada!" + "\nA quantidade do seu estoque agora é: " + umMedicamento.qtdEstoque);
+                System.out.println("A quantidade em estoque foi alterada!" + "\nA quantidade do seu estoque agora é: " + umMedicamento.qtdEstoque + "\n");
             } else if (opt == 2) {
                 System.out.println("\nInforme a quantidade de medicamentos a serem vendidos");
                 umMedicamento.vender(entrada.nextInt());
