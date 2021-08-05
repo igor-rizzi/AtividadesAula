@@ -88,12 +88,93 @@ ORDER BY qtd DESC;
 	   FROM staff
 	   JOIN address ON staff.address_id = address.address_id 
 	   
-	  * Question 13 * */
+	  * Question 13 *
 	  
+  SELECT staff.staff_id,
+	 	 staff.first_name,
+	 	 staff.last_name,
+		 payment.payment_date,
+		 SUM(payment.amount) as Valor_gasto
+	FROM staff
+	JOIN payment ON staff.staff_id = payment.staff_id
+   --WHERE payment.payment_date BETWEEN '2007-01-01' AND '2007-01-31'
+GROUP BY staff.staff_id,
+	 	 staff.first_name,
+	 	 staff.last_name,
+		 payment.payment_date;
+		 
+		* Question 14 *
+		
+  SELECT film.title,
+  		 COUNT(*) as qtd
+  	FROM film_actor
+	JOIN film on film.film_id = film_actor.film_id
+GROUP BY film.title;
 
-	
-	
+		* Question 15 *
+		
+  SELECT f.title,
+  		 COUNT(*) as qtd
+  	FROM film as f
+	JOIN inventory as i ON f.film_id = i.film_id
+   WHERE f.title = 'Hunchback Impossible'
+GROUP BY f.title;
 
+		* Question 16 *
 	
-	
+	SELECT c.customer_id,
+	 	   c.first_name,
+	 	   c.last_name,
+		   SUM(p.amount) as valor_gasto
+	FROM customer as c
+	JOIN payment as p ON c.customer_id = p.customer_id
+GROUP BY c.customer_id,
+	 	 c.first_name,
+	 	 c.last_name
+ORDER BY last_name ASC;
 
+		* Question 17 *
+	
+  SELECT f.title,
+  		 l.name
+	FROM film as f
+	JOIN language as l ON f.language_id = l.language_id
+   WHERE f.title like 'K%' 
+   	  OR f.title like 'Q%'
+	 AND l.name = 'English'
+GROUP BY f.title,
+  		 l.name;
+		 
+		 * Question 18 *
+		 
+  SELECT a.first_name,
+  		 a.last_name,
+		 f.title
+    FROM film as f
+	JOIN film_actor as fa ON f.film_id = fa.film_id
+	JOIN actor as a ON fa.actor_id = a.actor_id
+   WHERE f.title = 'Alone Trip'
+GROUP BY a.first_name,
+  		 a.last_name,
+		 f.title;
+		 
+-- com subquerry
+	SELECT a.first_name,
+  		   a.last_name
+      FROM film_actor as fa
+	  JOIN actor as a ON fa.actor_id = a.actor_id
+	 WHERE fa.film_id = (SELECT film_id
+	   							   FROM film as f
+	  							  WHERE f.title = 'Alone Trip');
+	 
+
+	 	* Question 23 *
+		
+  SELECT s.store_id,
+  		 city.city,
+		 c.country
+  	FROM store as s
+	JOIN address as a on s.address_id = a.address_id 
+  	JOIN city on a.city_id = city.city_id
+	JOIN country as c on city.country_id = c.country_id*/
+	
