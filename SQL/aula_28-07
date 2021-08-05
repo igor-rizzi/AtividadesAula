@@ -166,7 +166,50 @@ GROUP BY a.first_name,
 	 WHERE fa.film_id = (SELECT film_id
 	   							   FROM film as f
 	  							  WHERE f.title = 'Alone Trip');
-	 
+	
+	
+		* Question 19 *
+	
+  SELECT co.first_name,
+  		 co.last_name,
+		 co.email
+  	FROM customer as co
+	JOIN address as a on co.address_id = a.address_id
+	JOIN city on a.city_id = city.city_id
+	JOIN country as c on city.country_id = c.country_id
+   WHERE c.country = 'Canada'
+GROUP BY co.first_name,
+  		 co.last_name,
+		 co.email;
+		 
+		 * Question 20 *
+		 
+  SELECT f.title
+  	FROM film as f
+	JOIN film_category as fc ON f.film_id = fc.film_id
+	JOIN category as c ON fc.category_id = c.category_id
+   WHERE c.name = 'Family'
+GROUP BY f.title;
+
+		* Question 21 *
+		
+  SELECT f.title,
+  		 CAST (r.rental_date as date)
+	FROM film as f
+	JOIN inventory as i ON f.film_id = i.film_id
+	JOIN rental as r ON i.inventory_id = r.inventory_id
+GROUP BY f.title,
+  		 r.rental_date
+ORDER BY r.rental_date DESC;
+
+		* Question 22 *
+
+  SELECT s.store_id,
+  		 COUNT (*) as negócios
+  	FROM store as s
+	JOIN staff as st ON s.store_id = st.store_id
+	JOIN payment as p ON st.staff_id = p.staff_id
+GROUP BY s.store_id
 
 	 	* Question 23 *
 		
@@ -176,5 +219,21 @@ GROUP BY a.first_name,
   	FROM store as s
 	JOIN address as a on s.address_id = a.address_id 
   	JOIN city on a.city_id = city.city_id
-	JOIN country as c on city.country_id = c.country_id*/
+	JOIN country as c on city.country_id = c.country_id
 	
+		* Question 24 *
+		
+  SELECT cat.name,
+  		 SUM(p.amount) as receita
+  	FROM film as f
+	JOIN film_category as fc ON f.film_id = fc.film_id
+	JOIN category as cat ON fc.category_id = cat.category_id
+	JOIN inventory as i ON f.film_id = i.film_id
+	JOIN rental as r ON i.inventory_id = r.inventory_id
+	JOIN payment as p ON r.rental_id = p.rental_id
+GROUP BY cat.name,
+  		 p.amount
+ORDER BY p.amount limit 5;*/
+	
+  	
+  		
