@@ -13,7 +13,7 @@ class Main{
         JOptionPane.showMessageDialog(null, "Seja Bem-Vindo ao Banco do Igão!",null, 1);
         
         do{ 
-		    System.out.println("\nDigite o que deseja realizar na conta\n (0) Criar nova Conta\n (1) Listar contas\n (3) Efetuar Saque\n (4) Efetuar Dep�sito\n (5) Sair\n");
+		    System.out.println("\nDigite o que deseja realizar na conta\n (0) Criar nova Conta\n (1) Listar contas\n (2) Efetuar Saque\n (3) Efetuar Depósito\n (4) Sair\n");
 		    opt = entrada.nextInt();
 		   
 			if (opt == 0){
@@ -35,12 +35,14 @@ class Main{
 					Conta cc = (Conta) ListaConta.get(i);
 					JOptionPane.showMessageDialog(null, "O número da conta é: " + cc.numero + "\nO nome do titular da conta é: " + cc.dono + "\nO saldo da conta é: " + cc.saldo, "Conta: " + cc.numero, 1);
 				}
+
 			}else if (opt == 2){
-				int i, numUsar;
+				int i;
 				for(i = 0; i < ListaConta.size(); i++) {
 					Conta cc = (Conta) ListaConta.get(i);
+
 					JOptionPane.showMessageDialog(null, "A conta é!",null, 1);
-					JOptionPane.showMessageDialog(null, "O número da conta é: " + cc.numero + "\nO nome do titular da conta é: " + cc.dono + "\nO saldo da conta é: " + cc.saldo, null, 1);
+					JOptionPane.showMessageDialog(null, "O número da conta é: " + cc.numero + "\nO nome do titular da conta é: " + cc.dono + "\nO saldo da conta é: " + cc.saldo, "Conta: " + cc.numero, 1);
 					
 					System.out.println("Insira o valor do saque:");
 
@@ -52,18 +54,25 @@ class Main{
 					
 				}
 				
-			}/*else if(opt == 3){
-				System.out.println("\n\nConta do(a): " + conta1.dono);
-				System.out.println ("Qual eh o valor do deposito\n?");
-				Conta.deposita(entrada.nextDouble());
+			}else if(opt == 3){
+				int i;
+				
+				for(i = 0; i < ListaConta.size(); i++) {
+					Conta cc = (Conta) ListaConta.get(i);
+					
+					JOptionPane.showMessageDialog(null, "A conta é!",null, 1);
+					JOptionPane.showMessageDialog(null, "O número da conta é: " + cc.numero + "\nO nome do titular da conta é: " + cc.dono + "\nO saldo da conta é: " + cc.saldo, "Conta: " + cc.numero, 1);
+					
+					System.out.println ("Qual eh o valor do deposito\n?");
+		
+					cc.deposita(entrada.nextDouble());
+				}
 				
 			}else if (opt == 4){
-				System.out.println("Saiu da aplicacao\n");
+				JOptionPane.showMessageDialog(null, "O banco do Igão agradece a preferencia, volte sempre!", "Nunca será um adeus!", 3);
 			}else{
-				System.out.println("Opção inválida\n");
-			}*/
-		} while(opt != 5);
-
-        
+				JOptionPane.showMessageDialog(null, "Ops... A sua opção é invalida!", "Algo de errado não está certo!", 2);
+			}
+		} while(opt != 4);
     }
 }
