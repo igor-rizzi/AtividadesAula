@@ -2,8 +2,6 @@ import javax.swing.JOptionPane;
 import java.util.*;
 
 class Main{
-	private static int i;
-
 	public static void main (String[] args){
         Scanner entrada = new Scanner(System.in);
         int opt, list;
