@@ -18,6 +18,15 @@ class Conta {
             return true;
         }
     }
+
+    public boolean getNumero(int contaUsada){
+        if(contaUsada == this.numero){
+            return true;
+        }else{
+            System.out.println("Número de conta invalida!");
+            return false;
+        }
+    }
     
     void deposita(double valor){
             this.saldo += valor;
