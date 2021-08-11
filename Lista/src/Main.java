@@ -2,13 +2,15 @@ import javax.swing.JOptionPane;
 import java.util.*;
 
 class Main{
+	private static int i;
+
 	public static void main (String[] args){
         Scanner entrada = new Scanner(System.in);
         int opt, list;
         String varDono;
         
         list = 1;
-        ArrayList ListaConta = new ArrayList<>();
+        ArrayList<Conta> ListaConta = new ArrayList<>();
         
         JOptionPane.showMessageDialog(null, "Seja Bem-Vindo ao Banco do Igão!",null, 1);
         
@@ -41,19 +43,22 @@ class Main{
 				for(i = 0; i < ListaConta.size(); i++) {
 					Conta cc = (Conta) ListaConta.get(i);
 
-					JOptionPane.showMessageDialog(null, "A conta é!",null, 1);
-					JOptionPane.showMessageDialog(null, "O número da conta é: " + cc.numero + "\nO nome do titular da conta é: " + cc.dono + "\nO saldo da conta é: " + cc.saldo, "Conta: " + cc.numero, 1);
-					
-					System.out.println("Insira o valor do saque:");
+					System.out.println("Informe o numero da conta");
 
-					if (cc.saca(entrada.nextDouble())){
-						System.out.println("Saque efetuado!\nPara a conta do(a): " + cc.dono + "! O saldo foi atualizado para: " + cc.saldo);
-					}else{
-						System.out.println("Saldo insuficiente!\n");
-					}	
-					
+					if(cc.getNumero(entrada.nextInt())){
+
+						JOptionPane.showMessageDialog(null, "A conta é!",null, 1);
+						JOptionPane.showMessageDialog(null, "O número da conta é: " + cc.numero + "\nO nome do titular da conta é: " + cc.dono + "\nO saldo da conta é: " + cc.saldo, "Conta: " + cc.numero, 1);
+							
+						System.out.println("Insira o valor do saque:");
+
+						if (cc.saca(entrada.nextDouble())){
+							System.out.println("Saque efetuado!\nPara a conta do(a): " + cc.dono + "! O saldo foi atualizado para: " + cc.saldo);
+						}else{
+							System.out.println("Saldo insuficiente!\n");
+						}		
+					}
 				}
-				
 			}else if(opt == 3){
 				int i;
 				
@@ -63,7 +68,7 @@ class Main{
 					JOptionPane.showMessageDialog(null, "A conta é!",null, 1);
 					JOptionPane.showMessageDialog(null, "O número da conta é: " + cc.numero + "\nO nome do titular da conta é: " + cc.dono + "\nO saldo da conta é: " + cc.saldo, "Conta: " + cc.numero, 1);
 					
-					System.out.println ("Qual eh o valor do deposito\n?");
+					System.out.println ("Qual é o valor do deposito?\n");
 		
 					cc.deposita(entrada.nextDouble());
 				}
